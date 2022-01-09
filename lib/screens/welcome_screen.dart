@@ -65,6 +65,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 ),
               ],
             ),
+            SizedBox(
+              height: 20.0,
+            ),
             RoundedButton(
               onpressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
@@ -88,4 +91,3 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 }
-
