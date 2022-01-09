@@ -3,18 +3,36 @@ import '../screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  @override
+
   static const String id = 'welcome screen';
+  @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
+  AnimationController controller;
+  @override
+  void initState() {
+    super.initState();
 
+    controller =
+        AnimationController(duration: Duration(seconds: 1), vsync: this);
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+    controller.forward();
+
+    controller.addListener(() {
+      setState(() {
+
+      });
+      print(controller.value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.red.withOpacity(controller.value),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -68,7 +86,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 elevation: 5.0,
                 child: MaterialButton(
                   onPressed: () {
-                   Navigator.pushNamed(context, RegistrationScreen.id);
+                    Navigator.pushNamed(context, RegistrationScreen.id);
                   },
                   minWidth: 200.0,
                   height: 42.0,
