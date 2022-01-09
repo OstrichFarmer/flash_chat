@@ -3,7 +3,6 @@ import '../screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
-
   static const String id = 'welcome screen';
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
@@ -12,6 +11,7 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
+  Animation animation;
   @override
   void initState() {
     super.initState();
@@ -19,20 +19,21 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     controller =
         AnimationController(duration: Duration(seconds: 1), vsync: this);
 
+    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white).animate(controller);
+
     controller.forward();
 
     controller.addListener(() {
-      setState(() {
-
-      });
+      setState(() {});
       print(controller.value);
+
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red.withOpacity(controller.value),
+      backgroundColor: animation.value,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
