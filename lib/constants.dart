@@ -18,7 +18,7 @@ const kMessageContainerDecoration = BoxDecoration(
   ),
 );
 
-const kTextFieldDecoration = InputDecoration(
+const kRoundedButtonDecoration = InputDecoration(
   hintText: 'Enter a value',
   contentPadding:
   EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
